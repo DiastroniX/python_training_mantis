@@ -1,5 +1,6 @@
 import time
 
+
 class SessionHelper:
 
     def __init__(self, app):
@@ -37,7 +38,7 @@ class SessionHelper:
 
     def is_logged_in(self):
         wd = self.app.wd
-        return len(wd.find_elements_by_link_text("Logout")) > 2
+        return len(wd.find_elements_by_link_text("Logout")) > 0
 
     def is_logged_in_as(self, username):
         wd = self.app.wd

@@ -18,11 +18,12 @@ class SoapHelper:
 
     project_cache = None
 
-    def project_list(self, username, password):
+    def project_list(self):
         client = Client("http://localhost/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl")
         self.project_cache = []
         try:
-            for element in client.service.mc_projects_get_user_accessible(username, password):
+            for element in client.service.mc_projects_get_user_accessible(self.app.config['webadmin']['username'],
+                                                                            self.app.config['webadmin']['password']):
                 name = element.name
                 id = element.id
                 self.project_cache.append(Project(name=name, id=id))
